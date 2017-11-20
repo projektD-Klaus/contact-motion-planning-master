@@ -1,0 +1,18 @@
+#VRML V2.0 utf8
+
+Transform
+  {
+  translation 7.87165015e-2 0 0
+  children 
+    [
+    DEF gripper Inline
+      {
+      url "2d-gripper.wrl"
+      }
+    DEF boxes Inline
+      {
+      url "maze3.wrl"
+      }
+    ]
+  }
+

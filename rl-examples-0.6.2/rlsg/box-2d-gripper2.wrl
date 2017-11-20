@@ -1,0 +1,133 @@
+#VRML V2.0 utf8
+
+Transform
+  {
+  translation 7.87165015e-2 0 0
+  children 
+    [
+    DEF box-2d-050505 Transform
+      {
+      translation 0 1.99999809e-2 0.50000000
+      children 
+	[
+	DEF link0 Transform
+	  {
+	  }
+	DEF link1 Transform
+	  {
+	  }
+	DEF body1 Transform
+	  {
+	  translation 0 1.93645805e-2 0
+	  children 
+	    [
+	    DEF sensor1 Shape
+	      {
+	      appearance Appearance
+		{
+		material Material
+		  {
+		  diffuseColor 1 1 0
+		  transparency 0.50000000
+		  }
+		}
+	      geometry Box
+		{
+		size 0.50000000 0.51999998 0.50000000
+		}
+	      }
+	    DEF body1_6 Transform
+	      {
+	      translation -0.36999800 -0.29613199 0
+	      scale 0.49262401 1.51713204 1
+	      children 
+		DEF sensor2 Shape
+		  {
+		  appearance Appearance
+		    {
+		    material Material
+		      {
+		      diffuseColor 1 1 0
+		      transparency 0.50000000
+		      }
+		    }
+		  geometry Box
+		    {
+		    size 0.50000000 0.50000000 0.50000000
+		    }
+		  }
+	      }
+	    DEF body1_10 Transform
+	      {
+	      translation -0.36999800 -0.71091002 0
+	      scale 0.26515999 0.18327200 1
+	      children 
+		DEF sensor2_13 Shape
+		  {
+		  appearance Appearance
+		    {
+		    material Material
+		      {
+		      diffuseColor 1 1 0
+		      transparency 0.50000000
+		      }
+		    }
+		  geometry Box
+		    {
+		    size 0.50000000 0.50000000 0.50000000
+		    }
+		  }
+	      }
+	    DEF body1_14 Transform
+	      {
+	      translation 0.36842000 -0.28999999 0
+	      scale 0.49262401 1.51713204 1
+	      children 
+		DEF sensor2_19 Shape
+		  {
+		  appearance Appearance
+		    {
+		    material Material
+		      {
+		      diffuseColor 1 1 0
+		      transparency 0.50000000
+		      }
+		    }
+		  geometry Box
+		    {
+		    size 0.50000000 0.50000000 0.50000000
+		    }
+		  }
+	      }
+	    DEF body1_18 Transform
+	      {
+	      translation 0.37079200 -0.70999997 0
+	      scale 0.26515999 0.18327200 1
+	      children 
+		DEF sensor2_25 Shape
+		  {
+		  appearance Appearance
+		    {
+		    material Material
+		      {
+		      diffuseColor 1 1 0
+		      transparency 0.50000000
+		      }
+		    }
+		  geometry Box
+		    {
+		    size 0.50000000 0.50000000 0.50000000
+		    }
+		  }
+	      }
+	    ]
+	  }
+	]
+      }
+    DEF boxes Inline
+      {
+      url "gripper.wrl"
+      }
+    ]
+  }
+

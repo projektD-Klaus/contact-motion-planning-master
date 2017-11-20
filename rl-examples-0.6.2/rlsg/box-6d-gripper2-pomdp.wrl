@@ -1,0 +1,140 @@
+#VRML V2.0 utf8
+
+Transform
+  {
+  translation 7.87165015e-2 0 0
+  children 
+    [
+    DEF box-6d-050505 Transform
+      {
+      translation 0 1.99999809e-2 0.50000000
+
+      children [
+				DEF link0 Transform {
+					children [
+					]
+				}
+				DEF link1 Transform {
+					children [
+					]
+				}
+				DEF link2 Transform {
+					children [
+					]
+				}
+	DEF body1 Transform
+	  {
+	  translation 0 1.93645805e-2 0
+	  children [
+	  Transform {
+	  rotation 1 0 0 1.57
+	   children [
+	   	  Transform {
+	  rotation 0 0 1 1.57
+	   children [
+	    DEF box1 Shape
+	      {
+	      appearance Appearance
+		{
+		material Material
+		  {
+		  diffuseColor 0.5 0.5 0.5
+		  }
+		}
+	      geometry Box
+		{
+		size 0.50000000 0.50000000 0.30000000
+		}
+	      }
+	    DEF body1_6 Transform
+	      {
+	      translation -0.36999800 -0.29613199 0
+	      children 
+		DEF sensor2 Shape
+		  {
+		  appearance Appearance
+		    {
+		    material Material
+		      {
+		      diffuseColor 0.5 0.5 0.5
+		      }
+		    }
+		  geometry Box
+		    {
+		    size 0.246 0.75855 0.50000000
+		    }
+		  }
+	      }
+	    DEF body1_10 Transform
+	      {
+	      translation -0.36999800 -0.71091002 0
+	      children 
+		DEF sensor2_13 Shape
+		  {
+		  appearance Appearance
+		    {
+		    material Material
+		      {
+		      diffuseColor 0.5 0.5 0.5
+		      }
+		    }
+		  geometry Box
+		    {
+		    size 0.13255 0.0916 0.50000000
+		    }
+		  }
+	      }
+	    DEF body1_14 Transform
+	      {
+	      translation 0.36842000 -0.28999999 0
+	      children 
+		DEF sensor2_19 Shape
+		  {
+		  appearance Appearance
+		    {
+		    material Material
+		      {
+		      diffuseColor 0.5 0.5 0.5
+		      }
+		    }
+		  geometry Box
+		    {
+		    size 0.2463 0.75855 0.50000000
+		    }
+		  }
+	      }
+	    DEF body1_18 Transform
+	      {
+	      translation 0.37079200 -0.68821412 0
+	      children 
+		DEF sensor2_25 Shape
+		  {
+		  appearance Appearance
+		    {
+		    material Material
+		      {
+		      diffuseColor 0.5 0.5 0.5
+		      }
+		    }
+		  geometry Box
+		    {
+		    size 0.13255 0.0916 0.50000000
+		    }
+		  
+		  }
+	      }
+	    ]
+	  }
+	  ]
+	  }
+	  ]
+	  }
+	]
+      }
+    DEF boxes Inline
+      {
+      url "gripper-pomdp-box.wrl"
+      }
+    ]
+  }
+

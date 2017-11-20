@@ -1,0 +1,16 @@
+#VRML V2.0 utf8
+Transform {
+	children [
+		DEF barrett-wam-wrist Transform {
+			children [
+				Inline {
+					url "barrett-wam.convex/barrett-wam-hand.wrl"
+				}
+			]
+		}
+		DEF wall Inline {
+			url "door.wrl"
+		}
+	]
+}
+

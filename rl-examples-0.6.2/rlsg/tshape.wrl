@@ -1,0 +1,157 @@
+#VRML V2.0 utf8
+
+DEF room2 Transform
+  {
+  children 
+    [
+    DEF north Transform
+      {
+      translation 0 0.38999801 0.50000000
+      children 
+	Shape
+	  {
+	  appearance Appearance
+	    {
+	    material Material
+	      {
+	      }
+	    }
+	  geometry Box
+	    {
+	    size 4 0.10000000 1
+	    }
+	  }
+      }
+    DEF south Transform
+      {
+      translation 0 -2.54999804 0.50000000
+      children 
+	Shape
+	  {
+	  appearance Appearance
+	    {
+	    material Material
+	      {
+	      }
+	    }
+	  geometry Box
+	    {
+	    size 4 0.10000000 1
+	    }
+	  }
+      }
+    DEF west Transform
+      {
+      translation -1.95412385 -1.08678710 0.50000000
+      children 
+	Shape
+	  {
+	  appearance Appearance
+	    {
+	    material Material
+	      {
+	      }
+	    }
+	  geometry Box
+	    {
+	    size 0.10000000 3 1
+	    }
+	  }
+      }
+    DEF east Transform
+      {
+      translation 1.94523000 -1.08608126 0.50000000
+      children 
+	Shape
+	  {
+	  appearance Appearance
+	    {
+	    material Material
+	      {
+	      }
+	    }
+	  geometry Box
+	    {
+	    size 0.10000000 3.01999998 1
+	    }
+	  }
+      }
+    DEF box1_7 Transform
+      {
+      translation 2.95060803e-3 -2.32079648 0.50000000
+      children 
+	Shape
+	  {
+	  appearance Appearance
+	    {
+	    material Material
+	      {
+	      diffuseColor 1 0 0
+	      }
+	    }
+	  geometry Box
+	    {
+	    size 0.344 0.390 0.90114402
+	    }
+	  }
+      }
+    DEF box1_3 Transform
+      {
+      translation 0.34466797 -2.32079648 0.50000000
+      children 
+	Shape
+	  {
+	  appearance Appearance
+	    {
+	    material Material
+	      {
+	      diffuseColor 1 0 0
+	      }
+	    }
+	  geometry Box
+	    {
+	    size 0.344 0.39 0.90114402
+	    }
+	  }
+      }
+    DEF box1_5 Transform
+      {
+      translation -0.31522268 -2.32079648 0.50000000
+      children 
+	Shape
+	  {
+	  appearance Appearance
+	    {
+	    material Material
+	      {
+	      diffuseColor 1 0 0
+	      }
+	    }
+	  geometry Box
+	    {
+	    size 0.344 0.39 0.90114402
+	    }
+	  }
+      }
+    DEF box1_8 Transform
+      {
+      translation 1.66218876e-2 -1.94135880 0.50000000
+      children 
+	Shape
+	  {
+	  appearance Appearance
+	    {
+	    material Material
+	      {
+	      diffuseColor 1 0 0
+	      }
+	    }
+	  geometry Box
+	    {
+	    size 0.344 0.39 0.90114402
+	    }
+	  }
+      }
+    ]
+  }
+

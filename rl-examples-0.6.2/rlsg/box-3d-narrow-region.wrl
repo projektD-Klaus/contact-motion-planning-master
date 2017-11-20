@@ -1,0 +1,36 @@
+#VRML V2.0 utf8
+
+Transform {
+  translation 7.871650e-2 0 0
+  children [
+    DEF box-3d-050505 Transform {
+      translation -0.100000 -0.100000 0.500000
+      children [
+        DEF link0 Transform {
+        }
+        DEF link1 Transform {
+        }
+        DEF link2 Transform {
+        }
+        DEF body1 Transform {
+          children 
+            DEF sensor Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 1 1 0
+                  transparency 0.500000
+                }
+              }
+				geometry Box {
+					size 0.5 0.5 0.5
+				}
+            }
+        }
+      ]
+    }
+    DEF boxes Inline {
+      url "narrow-region.wrl"
+    }
+  ]
+}
+

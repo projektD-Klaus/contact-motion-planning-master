@@ -1,0 +1,175 @@
+#VRML V2.0 utf8
+
+Transform {
+  translation 7.871650e-2 0 0
+  children [
+    DEF box-2d-050505 Transform {
+      translation -0.100000 -0.100000 0.500000
+      children [
+        DEF link0 Transform {
+        }
+        DEF link1 Transform {
+        }
+        DEF body1 Transform {
+          translation 9.563360e-2 0.572090 0
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 1 1 0
+                  transparency 0.500000
+                }
+              }
+              geometry Box {
+                size 0.519998 0.519998 0.500000
+              }
+            }
+            DEF body1_7 Transform {
+              translation -0.316276 -0.470070 -7.954724e-4
+              children [
+                DEF body1_4 Transform {
+                  translation -9.783484e-2 1.377344e-3 -7.954724e-4
+                  scale 0.246300 1 1
+                  children 
+                    Shape {
+                      appearance Appearance {
+                        material Material {
+                          diffuseColor 1 1 0
+                          transparency 0.500000
+                        }
+                      }
+                      geometry Box {
+                        size 0.173786 0.697142 0.453276
+                      }
+                    }
+                }
+                DEF body1_10 Transform {
+                  translation -1.745012e-3 -0.346658 -7.954724e-4
+                  scale 0.336222 0.107348 1
+                  children [
+                    Shape {
+                      appearance Appearance {
+                        material Material {
+                          diffuseColor 1 1 0
+                          transparency 0.500000
+                        }
+                      }
+                      geometry Box {
+                        size 0.173786 0.697142 0.453276
+                      }
+                    }
+                    DEF body1_12 Transform {
+                      translation -9.783484e-2 1.377344e-3 -7.954724e-4
+                      scale 0.246300 1 1
+                      children 
+                        Shape {
+                          appearance Appearance {
+                            material Material {
+                              diffuseColor 1 1 0
+                              transparency 0.500000
+                            }
+                          }
+                          geometry Box {
+                            size 0.173786 0.697142 0.453276
+                          }
+                        }
+                    }
+                  ]
+                }
+                DEF body1_14 Transform {
+                  translation 8.918350e-2 1.377344e-3 -7.954724e-4
+                  scale 0.246300 1 1
+                  children 
+                    Shape {
+                      appearance Appearance {
+                        material Material {
+                          diffuseColor 1 1 0
+                          transparency 0.500000
+                        }
+                      }
+                      geometry Box {
+                        size 0.173786 0.697142 0.453276
+                      }
+                    }
+                }
+              ]
+            }
+            DEF body1_20 Transform {
+              translation 0.334092 -0.377664 -7.954724e-4
+              children [
+                DEF body1_25 Transform {
+                  translation -9.783484e-2 1.377344e-3 -7.954724e-4
+                  scale 0.246300 1 1
+                  children 
+                    Shape {
+                      appearance Appearance {
+                        material Material {
+                          diffuseColor 1 1 0
+                          transparency 0.500000
+                        }
+                      }
+                      geometry Box {
+                        size 0.173786 0.697142 0.453276
+                      }
+                    }
+                }
+                DEF body1_26 Transform {
+                  translation -1.745012e-3 -0.346658 -7.954724e-4
+                  scale 0.399374 0.107348 1
+                  children [
+                    Shape {
+                      appearance Appearance {
+                        material Material {
+                          diffuseColor 1 1 0
+                          transparency 0.500000
+                        }
+                      }
+                      geometry Box {
+                        size 0.173786 0.697142 0.453276
+                      }
+                    }
+                    DEF body1_29 Transform {
+                      translation -9.783484e-2 1.377344e-3 -7.954724e-4
+                      scale 0.246300 1 1
+                      children 
+                        Shape {
+                          appearance Appearance {
+                            material Material {
+                              diffuseColor 1 1 0
+                              transparency 0.500000
+                            }
+                          }
+                          geometry Box {
+                            size 0.173786 0.697142 0.453276
+                          }
+                        }
+                    }
+                  ]
+                }
+                DEF body1_28 Transform {
+                  translation 8.918350e-2 1.377344e-3 -7.954724e-4
+                  scale 0.246300 1 1
+                  children 
+                    Shape {
+                      appearance Appearance {
+                        material Material {
+                          diffuseColor 1 1 0
+                          transparency 0.500000
+                        }
+                      }
+                      geometry Box {
+                        size 0.173786 0.697142 0.453276
+                      }
+                    }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+    DEF boxes Inline {
+      url "gripper.wrl"
+    }
+  ]
+}

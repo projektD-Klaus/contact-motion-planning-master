@@ -1,0 +1,51 @@
+This project is a fork of RoboticsLibrary.
+
+Details: 
+http://www.roboticslibrary.org
+
+Build Instructions:
+http://www.roboticslibrary.org/tutorials/build-ubuntu
+
+If you want to try the Contact planner:
+run build/demos/rlPlanDemo/rlPlanDemo
+and open rl-examples-0.6.2/rlplan/box-2d-narrow-region_pcrrt.xml
+
+Hit space to start planning and F12 to reset the planner.
+
+
+Troubleshooting:
+Q: The planner says "start or goal invalid" for the plan file above
+A: You need an english number format in your OS. On Ubuntu type "locale" in the shell - there should be something like LC_NUMERIC=en_US.UTF-8. If it says something with "DE" you have to change the LC_NUMERIC field in /etc/default/locale 
+
+Q: I cannot build the robotics library under Ubuntu 16.04
+A: The launchpad repository is broken for 16.04. Markus Rickert (roboticslibrary developer) told me there will be a new version very soon that works under 16.04. 
+
+However, if you really want to run it with 16.04 you can follow these steps: 
+1. use libcoin80-dev and libsolid3-dev as dependencies
+
+2. grep -rl 'dSINGLE' ./ | xargs sed -i 's/dSINGLE/dDOUBLE/g'
+
+execute the following steps in contact-motion-planning:
+
+3. build the CGAL library: (stow is optional but helps uninstalling)
+sudo apt-get install stow
+wget https://gforge.inria.fr/frs/download.php/file/34512/CGAL-4.5.2.tar.gz
+tar -xvzf CGAL-4.5.2.tar.gz
+mkdir CGAL-4.5.2-build
+cd CGAL-4.5.2-build
+CGAL_DISABLE_GMP=1 cmake 
+-DCMAKE_INSTALL_PREFIX=/usr/local/stow/cgal-4.5.2 -DWITH_GMP=OFF 
+-DWITH_MPFR=OFF -DWITH_CGAL_Core/CMakeLists.txt=OFF 
+-DWITH_CGAL_ImageIO/CMakeLists.txt=OFF 
+-DWITH_CGAL_Qt3/CMakeLists.txt=OFF -DWITH_CGAL_Qt4/CMakeLists.txt=OFF 
+../CGAL-4.5.2
+sudo make install
+cd /usr/local/stow
+stow cgal-4.5.2
+
+then run:
+
+4. cmake -DBULLET_INCLUDE_DIRS=/usr/include/bullet/ -DSOLID_LIBRARIES=/usr/lib/x86_64-linux-gnu/libsolid3.so ..
+
+5. make (or open in QtCreator)
+

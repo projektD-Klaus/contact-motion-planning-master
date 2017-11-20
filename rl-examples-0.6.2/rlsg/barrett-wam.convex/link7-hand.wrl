@@ -1,0 +1,77 @@
+#VRML V2.0 utf8
+
+DEF link7 Transform {
+  translation 0.000000 0.000000 -0.006000
+  children [
+  Transform {
+ translation 0 0 0.027
+ rotation 1 0 0 1.57
+ children Shape {
+    geometry Cylinder {
+        height 0.048
+        radius 0.043
+    }
+  appearance Appearance {
+   material Material {}
+  }
+ }
+}
+
+  Transform {
+ translation 0 0.0 0.1
+  rotation 1 0 0 1.57
+ children 
+ DEF sensor1 Shape {
+    geometry Cylinder {
+        height 0.08
+        radius 0.043
+    }
+  appearance Appearance {
+        material Material
+        {
+	       diffuseColor 0.0 0.9 0.0
+	       transparency 0.4
+        }
+  }
+ }
+}
+
+  Transform {
+ translation 0 0.1 0.21
+ children 
+ DEF sensor2 Shape {
+    geometry Box {
+	    size 0.08 0.02 0.08
+    }
+  appearance Appearance {
+        material Material
+        {
+	       diffuseColor 0.0 0.9 0.0
+	       transparency 0.4
+        }
+  }
+ }
+}
+
+
+  Transform {
+ translation 0 0.06 0.16
+   rotation 1 0 0 -0.78
+ children 
+ DEF sensor3 Shape {
+    geometry Box {
+	    size 0.08 0.02 0.06
+    }
+  appearance Appearance {
+        material Material
+        {
+	       diffuseColor 0.0 0.9 0.0
+	       transparency 0.4
+        }
+  }
+ }
+}
+  
+ 
+  ]
+}

@@ -1,0 +1,162 @@
+#VRML V2.0 utf8
+
+Transform
+  {
+  translation 0.84999996 0 -0.69999998
+  children 
+    [
+    Transform
+      {
+      translation 0 0 0.50000000
+      children 
+	Shape
+	  {
+	  appearance Appearance
+	    {
+	    material Material
+	      {
+	      diffuseColor 1 0 1
+	      }
+	    }
+	  geometry Box
+	    {
+	    size 5.00000007e-2 0.69999998 1
+	    }
+	  }
+      }
+    Transform
+      {
+      translation 0.12500000 0 0.75000000
+      children 
+	Shape
+	  {
+	  appearance Appearance
+	    {
+	    material Material
+	      {
+	      diffuseColor 1 0 0
+	      }
+	    }
+	  geometry Box
+	    {
+	    size 0.20000000 0.69999998 1.50000000
+	    }
+	  }
+      }
+    Transform
+      {
+      translation 0 0 1.35000002
+      children 
+	Shape
+	  {
+	  appearance Appearance
+	    {
+	    material Material
+	      {
+	      diffuseColor 1 0 1
+	      }
+	    }
+	  geometry Box
+	    {
+	    size 5.00000007e-2 0.69999998 0.30000001
+	    }
+	  }
+      }
+    Transform
+      {
+      translation 0 0.22499999 1.10000002
+      children 
+	Shape
+	  {
+	  appearance Appearance
+	    {
+	    material Material
+	      {
+	      diffuseColor 1 0 1
+	      }
+	    }
+	  geometry Box
+	    {
+	    size 5.00000007e-2 0.25000000 0.20000000
+	    }
+	  }
+      }
+    Transform
+      {
+      translation 0 -0.22499899 1.10000002
+      children 
+	Shape
+	  {
+	  appearance Appearance
+	    {
+	    material Material
+	      {
+	      diffuseColor 1 0 1
+	      }
+	    }
+	  geometry Box
+	    {
+	    size 5.00000007e-2 0.25000000 0.20000000
+	    }
+	  }
+      }
+    Transform
+      {
+      translation -7.50000029e-2 0 1.45000004
+      children 
+	Shape
+	  {
+	  appearance Appearance
+	    {
+	    material Material
+	      {
+	      diffuseColor 1 1 0
+	      }
+	    }
+	  geometry Box
+	    {
+	    size 0.10000000 0.50000000 0.30000001
+	    }
+	  }
+      }
+    Transform
+      {
+      translation -7.50000029e-2 -5.00000007e-2 0.85000002
+      children 
+	Shape
+	  {
+	  appearance Appearance
+	    {
+	    material Material
+	      {
+	      diffuseColor 0 1 1
+	      }
+	    }
+	  geometry Box
+	    {
+	    size 0.10000000 0.30000001 0.20000000
+	    }
+	  }
+      }
+    Transform
+      {
+      translation -0.10000000 0.30000001 0.69999998
+      children 
+	Shape
+	  {
+	  appearance Appearance
+	    {
+	    material Material
+	      {
+	      diffuseColor 0 1 0
+	      }
+	    }
+	  geometry Box
+	    {
+	    size 0.15000000 0.40000000 0.50000000
+	    }
+	  }
+      }
+    ]
+  }
+
