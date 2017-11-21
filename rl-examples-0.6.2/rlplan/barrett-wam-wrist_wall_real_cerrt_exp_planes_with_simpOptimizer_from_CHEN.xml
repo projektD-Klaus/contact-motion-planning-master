@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rlplan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="rlplan.xsd">
+	<cerrt>
+	    <nrParticles>20</nrParticles>
+		<duration>180</duration>
+		<start>
+			<q unit="deg">0</q>
+			<q unit="deg">-50</q>
+			<q unit="deg">0</q>
+			<q unit="deg">130</q>
+			<q unit="deg">0</q>
+			<q unit="deg">0</q>
+			<q unit="deg">90</q>
+		</start>
+		<goal>
+			<q>0</q>
+			<q>0.704922</q>
+			<q>0</q>
+			<q>1.51822</q>
+			<q>0</q>
+			<q unit="deg">-39</q>
+			<q unit="deg">90</q>
+		</goal>
+		<model>
+			<kinematics href="../rlkin/barrett-wam-wrist.xml">
+				<world>
+				<rotation>
+						<x>0</x>
+						<y>0</y>
+						<z>0</z>
+					</rotation>
+					<translation>
+						<x>0</x>
+						<y>0</y>
+						<z>-0.195</z>
+					</translation>
+				</world>
+			</kinematics>
+			<model>0</model>
+			<scene href="../rlsg/barrett-wam-wrist_wall_real.convex.xml"/>
+			<planes href="../rlsg/planes/wall-rbo-boxes-ideal.xml"/>
+		</model>
+		<viewer>
+			<background>
+				<r>1</r>
+				<g>1</g>
+				<b>1</b>
+			</background>
+
+			<delta unit="deg">1</delta>
+			<model>
+			<kinematics href="../rlkin/barrett-wam-wrist.xml">
+				<world>
+				<rotation>
+						<x>0</x>
+						<y>0</y>
+						<z>0</z>
+					</rotation>
+					<translation>
+						<x>0</x>
+						<y>0</y>
+						<z>-0.195</z>
+					</translation>
+				</world>
+			</kinematics>
+				<model>0</model>
+	<scene href="../rlsg/barrett-wam-wrist_wall_real.xml"/>
+			</model>
+			<size>
+				<height>768</height>
+				<width>1024</width>
+			</size>
+			<wait/>
+		</viewer>
+		<gamma>0.95</gamma>
+		<delta unit="deg">1</delta>
+             <initialError>
+              <q>0.02</q>
+              <q>0.02</q>
+              <q>0.02</q>
+              <q>0.02</q>
+              <q>0.02</q>
+              <q>0.02</q>
+              <q>0.02</q>
+            </initialError>
+            <motionError>
+              <q>0.02</q>
+              <q>0.02</q>
+              <q>0.02</q>
+              <q>0.02</q>
+              <q>0.02</q>
+              <q>0.02</q>
+              <q>0.0</q>
+            </motionError>
+            <goalEpsilon>0.05</goalEpsilon>
+            <!-- <useMotionError/> -->
+            <uniformSampler>
+              <seed>1</seed>
+            </uniformSampler>
+
+            <!-- Decides between the 4 primitives (guarded/connect freespace/slide motions) -->
+            <!-- If seed is < 0, it is ignored. -->
+            <primitiveSampler>
+              <seed>-1</seed>
+            </primitiveSampler>
+
+			<simpleOptimizer>
+			<recursiveVerifier>
+				<delta unit="deg">1</delta>
+			</recursiveVerifier>
+			<length unit="deg">15</length>
+			<ratio>0.05</ratio>
+		</simpleOptimizer>
+	</cerrt>
+</rlplan>
