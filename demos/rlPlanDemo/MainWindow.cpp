@@ -1404,7 +1404,7 @@ MainWindow::load(const QString& filename)
   }
   else if ("cerrt" == planner.getNodeTab(0).getName())
   {
-    std::cout << "Engine: " << this->engine.toStdString() << std::endl;
+    std::cout << "Engine: " << this->engine.toStdString() << std::endl;   //e.g. "Engine: bullet" appears on terminal firstly
 
     this->planner = boost::make_shared< rl::plan::Cerrt >();
     rl::plan::Cerrt* cerrt = static_cast< rl::plan::Cerrt* >(this->planner.get());
@@ -1438,7 +1438,7 @@ MainWindow::load(const QString& filename)
 
     if ("deg" == path.eval("string(delta/@unit)", planner.getNodeTab(0)).getStringval())
     {
-      cerrt->delta *= rl::math::DEG2RAD;
+      cerrt->delta *= rl::math::DEG2RAD; //(M_PI) / 180.0f;
     }
 
     cerrt->nrParticles = (int) path.eval("number(nrParticles)", planner.getNodeTab(0)).getFloatval(20.0f);

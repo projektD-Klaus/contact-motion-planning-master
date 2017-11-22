@@ -57,12 +57,12 @@ PlannerModel::data(const QModelIndex& index, int role) const
 	{
 		return QVariant();
 	}
-	
+
 	if (!index.isValid())
 	{
 		return QVariant();
 	}
-	
+
 	switch (role)
 	{
 	case Qt::DisplayRole:
@@ -75,7 +75,7 @@ PlannerModel::data(const QModelIndex& index, int role) const
 		default:
 			break;
 		}
-		
+
 		if (rl::plan::Eet* eet = dynamic_cast< rl::plan::Eet* >(MainWindow::instance()->planner.get()))
 		{
 			switch (index.row())
@@ -111,7 +111,7 @@ PlannerModel::data(const QModelIndex& index, int role) const
 				break;
 			}
 		}
-		
+
 		if (rl::plan::Prm* prm = dynamic_cast< rl::plan::Prm* >(MainWindow::instance()->planner.get()))
 		{
 			switch (index.row())
@@ -132,7 +132,7 @@ PlannerModel::data(const QModelIndex& index, int role) const
 				break;
 			}
 		}
-		
+
 		if (rl::plan::Rrt* rrt = dynamic_cast< rl::plan::Rrt* >(MainWindow::instance()->planner.get()))
 		{
 			switch (index.row())
@@ -147,7 +147,7 @@ PlannerModel::data(const QModelIndex& index, int role) const
 				break;
 			}
 		}
-		
+
 		if (rl::plan::RrtGoalBias* rrtGoalBias = dynamic_cast< rl::plan::RrtGoalBias* >(MainWindow::instance()->planner.get()))
 		{
 			switch (index.row())
@@ -165,7 +165,7 @@ PlannerModel::data(const QModelIndex& index, int role) const
 	default:
 		break;
 	}
-	
+
 	return QVariant();
 }
 
@@ -176,7 +176,7 @@ PlannerModel::flags(const QModelIndex &index) const
 	{
 		return Qt::NoItemFlags;
 	}
-	
+
 	return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
 }
 
@@ -187,7 +187,7 @@ PlannerModel::headerData(int section, Qt::Orientation orientation, int role) con
 	{
 		return QVariant();
 	}
-	
+
 	if (Qt::DisplayRole == role && Qt::Horizontal == orientation)
 	{
 		if (0 == section)
@@ -195,7 +195,7 @@ PlannerModel::headerData(int section, Qt::Orientation orientation, int role) con
 			return MainWindow::instance()->planner->getName().c_str();
 		}
 	}
-	
+
 	if (Qt::DisplayRole == role && Qt::Vertical == orientation)
 	{
 		switch (section)
@@ -206,7 +206,7 @@ PlannerModel::headerData(int section, Qt::Orientation orientation, int role) con
 		default:
 			break;
 		}
-		
+
 		if (dynamic_cast< rl::plan::Eet* >(MainWindow::instance()->planner.get()))
 		{
 			switch (section)
@@ -242,7 +242,7 @@ PlannerModel::headerData(int section, Qt::Orientation orientation, int role) con
 				break;
 			}
 		}
-		
+
 		if (dynamic_cast< rl::plan::Prm* >(MainWindow::instance()->planner.get()))
 		{
 			switch (section)
@@ -263,7 +263,7 @@ PlannerModel::headerData(int section, Qt::Orientation orientation, int role) con
 				break;
 			}
 		}
-		
+
 		if (dynamic_cast< rl::plan::Rrt* >(MainWindow::instance()->planner.get()))
 		{
 			switch (section)
@@ -278,7 +278,7 @@ PlannerModel::headerData(int section, Qt::Orientation orientation, int role) con
 				break;
 			}
 		}
-		
+
 		if (dynamic_cast< rl::plan::RrtGoalBias* >(MainWindow::instance()->planner.get()))
 		{
 			switch (section)
@@ -291,7 +291,7 @@ PlannerModel::headerData(int section, Qt::Orientation orientation, int role) con
 			}
 		}
 	}
-	
+
 	return QVariant();
 }
 
@@ -308,7 +308,7 @@ PlannerModel::rowCount(const QModelIndex& parent) const
 	{
 		return 0;
 	}
-	
+
 	if (dynamic_cast< rl::plan::Prm* >(MainWindow::instance()->planner.get()))
 	{
 		return 5;
@@ -325,7 +325,7 @@ PlannerModel::rowCount(const QModelIndex& parent) const
 	{
 		return 3;
 	}
-	
+
 	return 0;
 }
 
@@ -336,12 +336,12 @@ PlannerModel::setData(const QModelIndex& index, const QVariant& value, int role)
 	{
 		return false;
 	}
-	
+
 	if (MainWindow::instance()->thread->isRunning())
 	{
 		return false;
 	}
-	
+
 	if (index.isValid() && Qt::EditRole == role)
 	{
 		switch (index.row())
@@ -352,7 +352,7 @@ PlannerModel::setData(const QModelIndex& index, const QVariant& value, int role)
 		default:
 			break;
 		}
-		
+
 		if (rl::plan::Eet* eet = dynamic_cast< rl::plan::Eet* >(MainWindow::instance()->planner.get()))
 		{
 			switch (index.row())
@@ -388,7 +388,7 @@ PlannerModel::setData(const QModelIndex& index, const QVariant& value, int role)
 				break;
 			}
 		}
-		
+
 		if (rl::plan::Prm* prm = dynamic_cast< rl::plan::Prm* >(MainWindow::instance()->planner.get()))
 		{
 			switch (index.row())
@@ -409,7 +409,7 @@ PlannerModel::setData(const QModelIndex& index, const QVariant& value, int role)
 				break;
 			}
 		}
-		
+
 		if (rl::plan::Rrt* rrt = dynamic_cast< rl::plan::Rrt* >(MainWindow::instance()->planner.get()))
 		{
 			switch (index.row())
@@ -424,7 +424,7 @@ PlannerModel::setData(const QModelIndex& index, const QVariant& value, int role)
 				break;
 			}
 		}
-		
+
 		if (rl::plan::RrtGoalBias* rrtGoalBias = dynamic_cast< rl::plan::RrtGoalBias* >(MainWindow::instance()->planner.get()))
 		{
 			switch (index.row())
@@ -436,11 +436,11 @@ PlannerModel::setData(const QModelIndex& index, const QVariant& value, int role)
 				break;
 			}
 		}
-		
+
 		emit dataChanged(index, index);
-		
+
 		return true;
 	}
-	
+
 	return false;
 }

@@ -193,7 +193,7 @@ Thread::run()
     return;
   }
 
-  std::cout << "solve() ... " << std::endl;;
+  std::cout << "solve()ing ... " << std::endl;;
   timer.start();
   bool solved = MainWindow::instance()->planner->solve();
   timer.stop();
@@ -273,6 +273,8 @@ Thread::run()
 
 
   rl::plan::VectorList path;
+  rl::plan::VectorListArray path_of_particle; // added by CHEN
+  //rl::plan::VectorListVector path_of_particle; // added by CHEN
 
   if (solved)
   {
@@ -280,6 +282,7 @@ Thread::run()
 
     rl::plan::VectorList::iterator i = path.begin();
     rl::plan::VectorList::iterator j = ++path.begin();
+
 
     rl::math::Real length = 0;
 
@@ -310,14 +313,48 @@ Thread::run()
       for(int i=0; i<cerrt->nrParticles; i++)
       {
         cerrt->getPath(path, i);
+
+        //save path for p_i in a vector of paths
+        path_of_particle[i] = path;  // added by CHEN
+      //  this->drawConfigurationPath(path_of_particle[i]);  //added by CHEN plot 20 pathes..  --tested
+
+
+
+
         if (this->swept && i==0)
         {
           this->drawSweptVolume(path);
           return;
         }
 
-        this->drawConfigurationPath(path);
+        //this->drawConfigurationPath(path);  // plot 20 times here and pathes are without optimized
       }
+      this->drawConfigurationPath(path_of_particle[0]);
+      //call optimzer on vector of paths
+      // retun a vector of paths
+
+      if (NULL != MainWindow::instance()->optimizer)
+      {
+        usleep(static_cast< std::size_t >(2.0f * 1000.0f * 1000.0f));
+
+        std::cout << "optimize() ... "<< MainWindow::instance()->optimizer->getName() << std::endl;;
+        timer.start();
+        //MainWindow::instance()->optimizer->process(path);
+        MainWindow::instance()->optimizer->process_1(path_of_particle); // new added by CHEN
+        timer.stop();
+        std::cout << "optimize() " << timer.elapsed() * 1000.0f << " ms" << std::endl;
+
+        //for(int i=0; i<cerrt->nrParticles; i++)  // new added by CHEN
+        this->drawConfigurationPath(path_of_particle[0]);   // new added by CHEN
+        //this->drawConfigurationPath( (path_of_particle[0]+path_of_particle[19])/2 );   //  a idea, how we get a path_mean
+      }
+
+
+//        this->drawConfigurationPath(path);   //hua zuizhong jieguo lujing --tested
+      
+      //like above go throug all paths and visualise
+//      this->drawConfigurationPath(path_of_particle[0]);  //added by CHEN, can plot --tested
+//      this->drawConfigurationPath(path_of_particle[19]);  //added by CHEN, can plot --tested
     }
     else
     {
@@ -328,24 +365,29 @@ Thread::run()
         this->drawSweptVolume(path);
         return;
       }
-
-      //this->drawConfigurationPath(path);
+      // this->drawConfigurationPath(path_of_particle[0]);  //added by CHEN
+     // this->drawConfigurationPath(path);  //hua zuizhong jieguo lujing --tested
 
       if (!this->running) return;
 
-      if (NULL != MainWindow::instance()->optimizer)
-      {
-        usleep(static_cast< std::size_t >(2.0f * 1000.0f * 1000.0f));
 
-        std::cout << "optimize() ... " << std::endl;;
-        timer.start();
-        MainWindow::instance()->optimizer->process(path);
-        timer.stop();
-        std::cout << "optimize() " << timer.elapsed() * 1000.0f << " ms" << std::endl;
 
-      }
+//      if (NULL != MainWindow::instance()->optimizer)
+//      {
+//        usleep(static_cast< std::size_t >(2.0f * 1000.0f * 1000.0f));
 
-      this->drawConfigurationPath(path);
+//        std::cout << "optimize() ... " << std::endl;;
+//        timer.start();
+//        //MainWindow::instance()->optimizer->process(path);
+//        MainWindow::instance()->optimizer->process_1(path_of_particle); // new added by CHEN
+//        timer.stop();
+//        std::cout << "optimize() " << timer.elapsed() * 1000.0f << " ms" << std::endl;
+
+//      }
+
+//        for(int i=0; i<cerrt->nrParticles; i++)  // new added by CHEN
+//        this->drawConfigurationPath(path_of_particle[i]);   // new added by CHEN
+//   //   this->drawConfigurationPath(path);   //hua zuizhong jieguo lujing --tested
     }
 
     if (rl::plan::Rrt* rrt = dynamic_cast< rl::plan::Rrt* >(MainWindow::instance()->planner.get()))
@@ -386,14 +428,17 @@ Thread::run()
     rl::math::Vector diff(MainWindow::instance()->model->getDof());
     rl::math::Vector inter(MainWindow::instance()->model->getDof());
 
-    while (true)
+    while (true)     // this part is for guiding the robot to move along the selected path.
     {
       if (!this->running) break;
 
-      rl::plan::VectorList::iterator i = path.begin();
-      rl::plan::VectorList::iterator j = ++path.begin();
+  //    for(int p=0; p<20; p++) //  for(int i=0; i<cerrt->nrParticles; i++)  for loop {} added by CHEN  replace path by path_of_particle[p]
+      {
 
-      if (i != path.end() && j != path.end())
+      rl::plan::VectorList::iterator i = path_of_particle[0].begin();
+      rl::plan::VectorList::iterator j = ++path_of_particle[0].begin();
+
+      if (i != path_of_particle[0].end() && j != path_of_particle[0].end())
       {
         this->drawConfiguration(*i);
         usleep(static_cast< std::size_t >(0.01f * 1000.0f * 1000.0f));
@@ -401,7 +446,7 @@ Thread::run()
 
       rl::math::Real delta = MainWindow::instance()->viewer->delta;
 
-      for (; i != path.end() && j != path.end(); ++i, ++j)
+      for (; i != path_of_particle[0].end() && j != path_of_particle[0].end(); ++i, ++j)
       {
         diff = *j - *i;
 
@@ -419,16 +464,16 @@ Thread::run()
 
       if (!this->running) break;
 
-      rl::plan::VectorList::reverse_iterator ri = path.rbegin();
-      rl::plan::VectorList::reverse_iterator rj = ++path.rbegin();
+      rl::plan::VectorList::reverse_iterator ri = path_of_particle[0].rbegin();
+      rl::plan::VectorList::reverse_iterator rj = ++path_of_particle[0].rbegin();
 
-      if (ri != path.rend() && rj != path.rend())
+      if (ri != path_of_particle[0].rend() && rj != path_of_particle[0].rend())
       {
         this->drawConfiguration(*ri);
         usleep(static_cast< std::size_t >(0.01f * 1000.0f * 1000.0f));
       }
 
-      for (; ri != path.rend() && rj != path.rend(); ++ri, ++rj)
+      for (; ri != path_of_particle[0].rend() && rj != path_of_particle[0].rend(); ++ri, ++rj)
       {
         diff = *rj - *ri;
 
@@ -442,6 +487,7 @@ Thread::run()
           this->drawConfiguration(inter);
           usleep(static_cast< std::size_t >(0.01f * 1000.0f * 1000.0f));
         }
+      }
       }
     }
   }
