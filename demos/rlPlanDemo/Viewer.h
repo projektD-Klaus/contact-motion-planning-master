@@ -42,6 +42,8 @@
 #include <Inventor/VRMLnodes/SoVRMLTransform.h>
 #include <rl/plan/Model.h>
 #include <rl/plan/VectorList.h>
+#include <rl/plan/VectorListArray.h>   // added by CHEN
+//#include <rl/plan/VectorListVector.h>  // added by CHEN
 #include <rl/plan/Viewer.h>
 #include <rl/sg/PlanarSegmentation.h>
 
