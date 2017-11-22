@@ -29,6 +29,7 @@
 #include "Verifier.h"
 #include "Viewer.h"
 
+
 namespace rl
 {
 	namespace plan
@@ -41,6 +42,12 @@ namespace rl
 		SimpleOptimizer::~SimpleOptimizer()
 		{
 		}
+
+        ::std::string                     // add by CHEN
+        SimpleOptimizer::getName()     // add by CHEN
+        {
+            return "with my_SimpleOptimizer";  // add by CHEN
+        }
 		
 		void
 		SimpleOptimizer::process(VectorList& path)
@@ -82,5 +89,53 @@ namespace rl
 				}
 			}
 		}
-	}
+
+        void
+        SimpleOptimizer::process_1(VectorListArray& path_collection)   // <-this fun new added by CHEN
+        {
+
+            for(int p=0; p<20; p++)    // for(int i=0; i<cerrt->nrParticles; i++)
+            {
+
+
+                bool changed = true;
+
+                while (changed && path_collection[p].size() > 2)
+            {
+                changed = false;
+
+                VectorList::iterator i = path_collection[p].begin();
+                VectorList::iterator j = ++path_collection[p].begin();
+                VectorList::iterator k = ++++path_collection[p].begin();
+
+                while (i != path_collection[p].end() && j != path_collection[p].end() && k != path_collection[p].end())
+                {
+                    ::rl::math::Real ik = this->model->distance(*i, *k);
+
+                    if (!this->verifier->isColliding(*i, *k, ik))
+                    {
+                        VectorList::iterator l = j;
+                        ++j;
+                        ++k;
+                        path_collection[p].erase(l);
+
+                        if (NULL != this->viewer)
+                        {
+                           // this->viewer->drawConfigurationPath(path_collection[p]);
+                        }
+
+                        changed = true;
+                    }
+                    else
+                    {
+                        ++i;
+                        ++j;
+                        ++k;
+                    }
+                }
+            }
+            }
+
+         }
+    }
 }

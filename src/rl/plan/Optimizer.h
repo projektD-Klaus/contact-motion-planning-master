@@ -28,6 +28,7 @@
 #define _RL_PLAN_OPTIMIZER_H_
 
 #include "VectorList.h"
+#include "VectorListArray.h"    // added by CHEN
 
 namespace rl
 {
@@ -42,9 +43,14 @@ namespace rl
 		public:
 			Optimizer();
 			
-			virtual ~Optimizer();
+            virtual ~Optimizer();
+
+
+            virtual ::std::string getName() = 0;
+
 			
 			virtual void process(VectorList& path) = 0;
+            virtual void process_1(VectorListArray& path_collection) = 0;  // new added by CHEN
 			
 			SimpleModel* model;
 			

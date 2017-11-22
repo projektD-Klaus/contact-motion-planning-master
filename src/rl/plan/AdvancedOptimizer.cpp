@@ -23,7 +23,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-
+#include <iostream>  // added by CHEN
 #include "AdvancedOptimizer.h"
 #include "SimpleModel.h"
 #include "Verifier.h"
@@ -43,6 +43,12 @@ namespace rl
 		AdvancedOptimizer::~AdvancedOptimizer()
 		{
 		}
+
+        ::std::string                     // add by CHEN
+        AdvancedOptimizer::getName()     // add by CHEN
+        {
+            return "with my_AdvancedOptimizer";  // add by CHEN
+        }
 		
 		void
 		AdvancedOptimizer::process(VectorList& path)
@@ -136,5 +142,105 @@ namespace rl
 				}
 			}
 		}
+
+
+        void
+        AdvancedOptimizer::process_1(VectorListArray& path_collection)
+        {
+
+
+        for(int p=0; p<20; p++)
+        {
+
+            bool changed = true;
+
+            VectorList::iterator i;
+            VectorList::iterator j;
+            VectorList::iterator k;
+
+            ::rl::math::Vector inter(this->model->getDof());
+
+            while (changed && path_collection[p].size() > 2)
+            {
+                while (changed && path_collection[p].size() > 2)
+                {
+                    changed = false;
+
+                    i = path_collection[p].begin();
+                    j = ++path_collection[p].begin();
+                    k = ++++path_collection[p].begin();
+
+                    while (i != path_collection[p].end() && j != path_collection[p].end() && k != path_collection[p].end())
+                    {
+                        ::rl::math::Real ik = this->model->distance(*i, *k);
+
+                        if (!this->verifier->isColliding(*i, *k, ik))
+                        {
+                            ::rl::math::Real ij = this->model->distance(*i, *j);
+                            ::rl::math::Real jk = this->model->distance(*j, *k);
+
+                            ::rl::math::Real alpha = ij / (ij + jk);
+
+                            this->model->interpolate(*i, *k, alpha, inter);
+
+                            ::rl::math::Real ratio = this->model->distance(*j, inter) / ik;
+
+                            if (ratio > this->ratio)
+                            {
+                                VectorList::iterator l = j;
+                                ++j;
+                                ++k;
+                                path_collection[p].erase(l);
+
+                                if (NULL != this->viewer)
+                                {
+                                    //this->viewer->drawConfigurationPath(path_collection[p]);
+                                }
+
+                                changed = true;
+                            }
+                            else
+                            {
+                                ++i;
+                                ++j;
+                                ++k;
+                            }
+                        }
+                        else
+                        {
+                            ++i;
+                            ++j;
+                            ++k;
+                        }
+                    }
+                }
+
+                i = path_collection[p].begin();
+                j = ++path_collection[p].begin();
+
+                while (i != path_collection[p].end() && j != path_collection[p].end())
+                {
+                    if (this->model->distance(*i, *j) > this->length)
+                    {
+                        this->model->interpolate(*i, *j, 0.5f, inter);
+
+                        j = path_collection[p].insert(j, inter);
+
+                        if (NULL != this->viewer)
+                        {
+                            //this->viewer->drawConfigurationPath(path_collection[p]);
+                        }
+
+                        changed = true;
+                    }
+                    else
+                    {
+                        ++i;
+                        ++j;
+                    }
+                }
+            }
+          }
+        }
 	}
 }

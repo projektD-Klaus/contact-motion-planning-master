@@ -39,8 +39,11 @@ namespace rl
 			SimpleOptimizer();
 			
 			virtual ~SimpleOptimizer();
+
+            ::std::string getName();    // added by CHEN
 			
 			void process(VectorList& path);
+            void process_1(VectorListArray& path_collection); // new added by CHEN
 			
 		protected:
 			

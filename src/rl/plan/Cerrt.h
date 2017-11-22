@@ -57,7 +57,7 @@ public:
   ::std::string getName() const;
 
   int nrParticles;
-  rl::math::Real gamma;
+  ::rl::math::Real gamma; // no :: 
 
   int seed;
   ::rl::math::Real goalEpsilon;

@@ -39,8 +39,10 @@ namespace rl
 			AdvancedOptimizer();
 			
 			virtual ~AdvancedOptimizer();
-			
+
+            ::std::string getName();    // added by CHEN
 			void process(VectorList& path);
+            void process_1(VectorListArray& path_collection); // new added by CHEN
 			
 			::rl::math::Real length;
 			
